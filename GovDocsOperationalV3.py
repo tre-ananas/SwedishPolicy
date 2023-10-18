@@ -17,13 +17,13 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import PyPDF2
 from io import BytesIO
-from tqdm import tqdm
+# from tqdm import tqdm
 import time
 import csv
 import sys
 
 # Other Settings
-pd.set_option('display.max.colwidth', None) # max display width
+# pd.set_option('display.max.colwidth', None) # max display width
 
 # END OF STEP 1
 
