@@ -10,7 +10,7 @@ while [[ $start -lt $end ]]; do
     next=$((start + increment))
     output_file="Logs/output_${start}_${next}"
     
-    GovDocsOperationalV3.py $start $next > "${output_file}_out.txt" 2> "${output_file}_err.txt" &
+    ~/chsres/SwedishPolicy/GovDocsOperationalV3.py $start $next > "${output_file}_out.txt" 2> "${output_file}_err.txt" &
 
     start=$next
 done
