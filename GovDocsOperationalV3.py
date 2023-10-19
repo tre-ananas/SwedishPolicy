@@ -119,6 +119,9 @@ article_link_directory = pd.DataFrame(data)
 layered_links = []
 text_data_list = []
 
+# No content alert
+no_content_alert = "NO CONTENT"
+
 for link in article_link_directory['Content Links']:
     try:
         # Send an HTTP GET request to the URL
@@ -136,7 +139,7 @@ for link in article_link_directory['Content Links']:
             if ul_tag:
                 # Find the first <a> tag with href inside the <ul> tag
                 first_link = ul_tag.find('a', href=True)
-                no_content_alert = "NO CONTENT"
+                # no_content_alert = "NO CONTENT"
                 if first_link:
                     layered_links.append(first_link['href'])
                     text_data_list.append(no_content_alert)
