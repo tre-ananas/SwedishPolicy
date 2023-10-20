@@ -21,6 +21,7 @@ from io import BytesIO
 import time
 import csv
 import sys
+from random import randint
 
 # Other Settings
 # pd.set_option('display.max.colwidth', None) # max display width
@@ -102,6 +103,9 @@ while lower <= page_number <= upper: # For all pages in the archive, change to w
     # Move to the next page
     page_number += 1
 
+    # Introduce a randome delay time before the next request
+    time.sleep(randint(5, 10))  # Adjust the delay time as needed
+
 # Create a DF with the all_links and all_dates lists
 data = {
     'Content Links': all_links,
@@ -159,8 +163,8 @@ for link in article_link_directory['Content Links']:
             text_data_list.append(text_data)
             layered_links.append(no_content_alert)
 
-        # Introduce a delay of 2 seconds before the next request
-        time.sleep(2)  # Adjust the delay time as needed
+            # Introduce a randome delay time before the next request
+            time.sleep(randint(5, 10))  # Adjust the delay time as needed
 
     except Exception as e:
         print(f"An error occurred while processing URL: {link}, Error: {str(e)}")
@@ -247,8 +251,8 @@ for pdf_url in article_link_directory['Full Collected Links']:
                 print(f"Failed to fetch PDF URL: {pdf_url}, Status code: {response.status_code}")
                 pdf_text_data.append("NO CONTENT")
 
-            # Introduce a delay of 2 seconds before the next request
-            time.sleep(2)  # Adjust the delay time as needed
+                # Introduce a randome delay time before the next request
+                time.sleep(randint(5, 10))  # Adjust the delay time as needed
 
         except Exception as e:
             print(f"An error occurred while processing PDF URL: {pdf_url}, Error: {str(e)}")
