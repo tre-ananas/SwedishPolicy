@@ -163,13 +163,13 @@ for link in article_link_directory['Content Links']:
             text_data_list.append(text_data)
             layered_links.append(no_content_alert)
 
-            # Introduce a randome delay time before the next request
-            time.sleep(randint(5, 10))  # Adjust the delay time as needed
-
     except Exception as e:
         print(f"An error occurred while processing URL: {link}, Error: {str(e)}")
         text_data_list.append(no_content_alert)
         layered_links.append(no_content_alert)
+
+    # Introduce a randome delay time before the next request
+    time.sleep(randint(5, 10))  # Adjust the delay time as needed
 
 # Create a DF with the all_links and all_dates and layered_links and text_data_list lists
 data = {
@@ -251,12 +251,13 @@ for pdf_url in article_link_directory['Full Collected Links']:
                 print(f"Failed to fetch PDF URL: {pdf_url}, Status code: {response.status_code}")
                 pdf_text_data.append("NO CONTENT")
 
-                # Introduce a randome delay time before the next request
-                time.sleep(randint(5, 10))  # Adjust the delay time as needed
-
         except Exception as e:
             print(f"An error occurred while processing PDF URL: {pdf_url}, Error: {str(e)}")
             pdf_text_data.append("NO CONTENT")
+
+    # Introduce a randome delay time before the next request
+    time.sleep(randint(5, 10))  # Adjust the delay time as needed
+
 
 # Create a new column "Inside PDF Text" in article_link_directory and assign pdf_text_data to it
 article_link_directory['Inside PDF Text'] = pdf_text_data
