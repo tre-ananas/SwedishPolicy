@@ -1,0 +1,7 @@
+Current page is 1
+Current page is 2
+Failed to fetch PDF URL: https://www.regeringen.se/contentassets/e829068a637e4614902753a98801a152/prop.-2023-24-29.pdf, Status code: 429
+Data Entries: (40, 5)
+First Page: 1
+Last Page: 2
+Final Page Processed: 2
