@@ -322,6 +322,29 @@ processed_data_keyword_coded = pd.concat([processed_data, keyword_df], axis=1)
 
 # STEP 8: REFORMAT TIME FOR processed_data_keyword_coded
 
+# Separate Months and Years for processed_data_with_keywords
+# Custom mapping for Swedish month names to English month names
+month_mapping = {
+    'januari': 'January',
+    'februari': 'February',
+    'mars': 'March',
+    'april': 'April',
+    'maj': 'May',
+    'juni': 'June',
+    'juli': 'July',
+    'augusti': 'August',
+    'september': 'September',
+    'oktober': 'October',
+    'november': 'November',
+    'december': 'December'
+}
+
+# Function to convert Swedish month names to English
+def convert_swedish_to_english(date_string):
+    day, month, year = date_string.split(' ')
+    month = month_mapping[month.lower()]
+    return f"{day} {month} {year}"
+
 # Convert Times on processed_data_keyword_coded
 # Apply the conversion function to the 'Date' column
 processed_data_keyword_coded['Date'] = processed_data_keyword_coded['Date'].apply(convert_swedish_to_english)
