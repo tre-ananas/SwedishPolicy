@@ -40,9 +40,12 @@ classifier_violence = BertForSequenceClassification.from_pretrained("RecordedFut
 
 # STEP 3: LOAD DATA
 
+# Take input for the input CSV file name
+input_file_name = input("Enter the name of the input CSV file (e.g., 'input_data.csv'): ")
+
 # Load Data
-unprocessed_data = pd.read_csv("swe_gov_docs_1_2_test.csv")
-unprocessed_data = unprocessed_data.rename(columns = {"Unnamed: 0": "Index"})
+unprocessed_data = pd.read_csv(input_file_name)
+unprocessed_data = unprocessed_data.rename(columns={"Unnamed: 0": "Index"})
 
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -336,5 +339,12 @@ processed_data_keyword_coded['Keywords'] = processed_data_keyword_coded['Text'].
 
 # STEP 10: OUTPUT VARIABLE .CSV FILES
 
+# Take input for the output CSV file name
+output_file_name = input("Enter the name for the output processed CSV file (e.g., 'processed_data_output.csv'): ")
+
+# Save processed data to CSV
+processed_data_keyword_coded.to_csv(output_file_name, index=False)
+
+print(f"Processed data has been saved to {output_file_name}")
 
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
