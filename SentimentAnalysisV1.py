@@ -283,8 +283,8 @@ keywords = [
     "Invandring", "Migrationspolitik", "Asylsökande", "Flyktingar", "Immigrant", "Utvandring",
     "Integration", "Integrationspolitik", "Mångkultur", "Integrationstjänster", "Integrationssvårigheter", "Integrationsprocess",
     "Assimilation", "Anpassning", "Kulturell assimilering", "Kulturell anpassning", "Språklig assimilering", "Social assimilering",
-    "Arabisk", "Syrisk", "Irakisk", "Iransk", "Palestinsk", "Libanesisk", "Turkisk", "Kurdisk",
-    "Arabiska", "Syriska", "Persiska", "Kurdiska", "Turkiska", "Skräckvälde", "Skräckvälde"
+    "Arabisk", "Syrisk", "Irakisk", "Iransk", "Palestinsk", "Libanesisk", "Turkisk", "Kurdisk", "Persisk",
+    "Araber", "Syrier", "Irakier", "Iranier", "Palestinier", "Libaneser", "Turkar", "Kurder"
 ]
 
 # Additional words related to immigration, integration, refugees, migration, and assimilation
@@ -292,8 +292,9 @@ additional_keywords = [
     "Invandring", "Integration", "Flykting", "Asyl", "Migrationsverket", "Anhöriginvandring", "Utlänning", 
     "Samhällsintegration", "Språkundervisning", "Mångfald", "Tolerans", "Diskriminering", "Rasism", "Inkludering", 
     "Immigrationslagar", "Gränskontroll", "Upphållstillstånd", "Integrationspolitik", 
-    "Skyddsbehövande", "Internflykting", "Utvisning", "HBTQ-flykting", "Assimilering", "Återvandring", 
-    "Anpassning", "Kulturkrock", "Etnicitet", "Terrorism", "Muslim", "Muslimer", "Islam", "Segregation", "Assimilation"
+    "Skyddsbehövande", "Internflykting", "Utvisning", "Assimilering", "Återvandring", 
+    "Anpassning", "Kulturkrock", "Etnicitet", "Terrorism", "Muslim", "Islam", "Segregation", "Assimilation",
+    "Syrien", "Iran", "Turkiet", "Irak", "Palestina", "Libanon", "Mellanöstern"
 ]
 
 # Remove duplicates and add additional_keywords to the original list
