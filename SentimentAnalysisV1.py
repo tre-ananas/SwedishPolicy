@@ -72,7 +72,7 @@ ids_list = []
 text_entries = unprocessed_data['Text'].tolist()
 ids = unprocessed_data['Index'].tolist()
 
-for text, text_id in zip(text_entries, ids):
+for text, text_id in tqdm(zip(text_entries, ids), total=len(text_entries), desc="Processing Texts"):
     sentences = nltk.sent_tokenize(text)
     
     for sentence in sentences:
@@ -137,7 +137,7 @@ new_violence_class_2_probs = []
 
 # Fear Classification
 # Iterate through grouped_df
-for id, group in classified_sentence_data_grouped:
+for id, group in tqdm(classified_sentence_data_grouped, desc="Processing Groups for Fear"):
     num_rows = len(group)
     # If there are less than 10 rows, select the row with the lowest Class 0 probability
     if num_rows < 10:
@@ -202,7 +202,7 @@ new_violence_class_2_probs = []
 
 # Violence Classification
 # Iterate through grouped_df
-for id, group in classified_sentence_data_grouped:
+for id, group in tqdm(classified_sentence_data_grouped, desc="Processing Groups for Violence"):
     num_rows = len(group)
     # If there are less than 10 rows, select the row with the lowest Class 0 probability
     if num_rows < 10:
