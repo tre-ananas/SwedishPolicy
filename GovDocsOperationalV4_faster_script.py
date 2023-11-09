@@ -6,6 +6,8 @@
 # Final output is a dataframe called swe_gov_docs, which we download as a csv and in json format.
 # Sleep times have been drastically reduced.
 
+# 11/9/23: Sleep times increased slightly
+
 # END OF TITLE AND DESCRIPTION
 
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +107,7 @@ while lower <= page_number <= upper: # For all pages in the archive, change to w
     page_number += 1
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(2, 4))  # Adjust the delay time as needed
+    time.sleep(randint(4, 5))  # Adjust the delay time as needed
 
 # Create a DF with the all_links and all_dates lists
 data = {
@@ -127,7 +129,7 @@ text_data_list = []
 # No content alert
 no_content_alert = "NO CONTENT"
 
-for link in article_link_directory['Content Links']:
+for link in tqdm(article_link_directory['Content Links'], desc="Step 1: Processing Links", unit="link"):
     try:
         # Send an HTTP GET request to the URL
         response = requests.get(link)
@@ -170,7 +172,7 @@ for link in article_link_directory['Content Links']:
         layered_links.append(no_content_alert)
 
     # Introduce a randome delay time before the next request
-    time.sleep(randint(2, 4))  # Adjust the delay time as needed
+    time.sleep(randint(4, 5))  # Adjust the delay time as needed
 
 # Create a DF with the all_links and all_dates and layered_links and text_data_list lists
 data = {
@@ -218,7 +220,7 @@ article_link_directory['Outside PDF Text'] = article_link_directory['Outside PDF
 # Initialize an empty list to collect text data from PDFs
 pdf_text_data = []
 
-for pdf_url in article_link_directory['Full Collected Links']:
+for pdf_url in tqdm(article_link_directory['Full Collected Links'], desc = "Step 2: Collecting PDF Text", unit = "link"):
     
     # Check if the URL contains the NO CONTENT alert
     if "NO CONTENT" in pdf_url:
@@ -256,8 +258,8 @@ for pdf_url in article_link_directory['Full Collected Links']:
             print(f"An error occurred while processing PDF URL: {pdf_url}, Error: {str(e)}")
             pdf_text_data.append("NO CONTENT")
 
-    # Introduce a randome delay time before the next request
-    time.sleep(randint(2, 4))  # Adjust the delay time as needed
+    # Introduce a random delay time before the next request
+    time.sleep(randint(4, 5))  # Adjust the delay time as needed
 
 
 # Create a new column "Inside PDF Text" in article_link_directory and assign pdf_text_data to it
