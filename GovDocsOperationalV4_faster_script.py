@@ -6,7 +6,7 @@
 # Final output is a dataframe called swe_gov_docs, which we download as a csv and in json format.
 # Sleep times have been drastically reduced.
 
-# 11/9/23: Sleep times increased slightly
+# 11/9/23: Sleep times increased slightly so as not to overload the archive
 
 # END OF TITLE AND DESCRIPTION
 
@@ -60,6 +60,7 @@ while lower <= page_number <= upper: # For all pages in the archive, change to w
 
     # Construct the URL for the current page
     url = f"{base_url}{query_param}{page_number}"
+    print(f"Current url is {url}") ###########################################################################
 
     # Send a GET request to the URL
     response = requests.get(url)
@@ -105,9 +106,10 @@ while lower <= page_number <= upper: # For all pages in the archive, change to w
 
     # Move to the next page
     page_number += 1
+    print(f"Moving to page {page_number}") ###################################################################
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(4, 5))  # Adjust the delay time as needed
+    time.sleep(randint(3, 5))  # Adjust the delay time as needed
 
 # Create a DF with the all_links and all_dates lists
 data = {
@@ -171,8 +173,8 @@ for link in tqdm(article_link_directory['Content Links'], desc="Step 1: Processi
         text_data_list.append(no_content_alert)
         layered_links.append(no_content_alert)
 
-    # Introduce a randome delay time before the next request
-    time.sleep(randint(4, 5))  # Adjust the delay time as needed
+    # Introduce a random delay time before the next request
+    time.sleep(randint(3, 5))  # Adjust the delay time as needed
 
 # Create a DF with the all_links and all_dates and layered_links and text_data_list lists
 data = {
@@ -259,7 +261,7 @@ for pdf_url in tqdm(article_link_directory['Full Collected Links'], desc = "Step
             pdf_text_data.append("NO CONTENT")
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(4, 5))  # Adjust the delay time as needed
+    time.sleep(randint(3, 5))  # Adjust the delay time as needed
 
 
 # Create a new column "Inside PDF Text" in article_link_directory and assign pdf_text_data to it
