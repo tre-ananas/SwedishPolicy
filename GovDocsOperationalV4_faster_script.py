@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import PyPDF2
 from io import BytesIO
-# from tqdm import tqdm
+from tqdm import tqdm
 import time
 import csv
 import sys
