@@ -99,16 +99,12 @@ for link in tqdm(article_link_directory['Content Links'], desc="Step 1: Collecti
         layered_links.append(no_content_alert)
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(3, 5))  # Adjust the delay time as needed
+    time.sleep(randint(4, 6))  # Adjust the delay time as needed
 
-# Create a DF with the all_links and all_dates and layered_links and text_data_list lists
-data = {
-    'Content Links': all_links,
-    'Publishing Dates': all_dates,
-    'Collected Links': layered_links,
-    'Outside PDF Text': text_data_list
-}
-article_link_directory = pd.DataFrame(data)
+# Create a DataFrame with the lists and rename columns
+additional_data = pd.DataFrame({'Collected Links': layered_links, 'Outside PDF Text': text_data_list})
+# Concatenate the new DataFrame with the original DataFrame along the columns axis (axis=1)
+article_link_directory = pd.concat([article_link_directory, additional_data], axis=1)
 
 # Add prefix to the links in the result_df to complete the links
 # Define the prefix to add
@@ -137,6 +133,9 @@ def remove_string(text):
 
 # Apply the defined function to 'Outside PDF Text' column
 article_link_directory['Outside PDF Text'] = article_link_directory['Outside PDF Text'].apply(remove_string)
+
+# Download article_link_directory as a fail safe
+article_link_directory.to_csv('article_link_directory_save_step_2.csv', index=False)
 
 # END OF STEP 3
 
@@ -186,11 +185,14 @@ for pdf_url in tqdm(article_link_directory['Full Collected Links'], desc = "Step
             pdf_text_data.append("NO CONTENT")
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(3, 5))  # Adjust the delay time as needed
+    time.sleep(randint(4, 6))  # Adjust the delay time as needed
 
 
 # Create a new column "Inside PDF Text" in article_link_directory and assign pdf_text_data to it
 article_link_directory['Inside PDF Text'] = pdf_text_data
+
+# Download article_link_directory as a fail safe
+article_link_directory.to_csv('article_link_directory_save_step_3.csv', index=False)
 
 # END OF STEP 4
 
