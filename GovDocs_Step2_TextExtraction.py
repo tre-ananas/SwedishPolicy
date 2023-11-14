@@ -32,7 +32,7 @@ from random import randint
 # STEP 2: LOAD DATA
 
 # Load data from CSV file into a DataFrame
-csv_file_path = "publication_info.csv"  # Update with the correct file path
+csv_file_path = "ppublication_info_1_9000.csv"  # Update with the correct file path
 existing_data = pd.read_csv(csv_file_path)
 
 # Rename the columns to match your desired names
