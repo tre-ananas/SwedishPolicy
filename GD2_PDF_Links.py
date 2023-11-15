@@ -113,7 +113,7 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as csv_file:
             csv_writer.writerow([no_content_alert, no_content_alert])
 
         # Introduce a random delay time before the next request
-        time.sleep(1)
+        time.sleep(3)
 
         # Add a break statement if the loop index is equal to the expected number of links minus 1
         if i == len(article_link_directory['Content Links']) - 1:
