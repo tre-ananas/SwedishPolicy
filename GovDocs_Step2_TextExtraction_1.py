@@ -97,7 +97,7 @@ for link in tqdm(article_link_directory['Content Links'], desc="Step 1: Collecti
         layered_links.append(no_content_alert)
 
     # Introduce a random delay time before the next request
-    time.sleep(randint(1,2))  # Adjust the delay time as needed
+    time.sleep(randint(4,5))  # Adjust the delay time as needed
 
 # Create a DataFrame with the lists and rename columns
 additional_data = pd.DataFrame({'Collected Links': layered_links, 'Outside PDF Text': text_data_list})
