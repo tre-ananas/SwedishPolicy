@@ -133,7 +133,7 @@ def remove_string(text):
 article_link_directory['Outside PDF Text'] = article_link_directory['Outside PDF Text'].apply(remove_string)
 
 # Download article_link_directory as a fail safe
-article_link_directory.to_csv('article_link_directory_save_step_2.csv', index=False)
+article_link_directory.to_csv('article_link_directory_save_step_2_3.csv', index=False)
 
 # END OF STEP 3
 
