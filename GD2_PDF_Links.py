@@ -33,7 +33,7 @@ import csv
 # STEP 2: LOAD DATA
 
 # Load data from CSV file into a DataFrame
-csv_file_path = "publication_info_test_set.csv"
+csv_file_path = "publication_info.csv"
 existing_data = pd.read_csv(csv_file_path)
 
 # Rename the columns to match your desired names
@@ -56,7 +56,7 @@ article_link_directory['Collected Links'] = ""
 article_link_directory['Outside PDF Text'] = ""
 
 # Specify the CSV file path
-csv_file_path = "output_data_test.csv"
+csv_file_path = "pdf_links.csv"
 
 
 
