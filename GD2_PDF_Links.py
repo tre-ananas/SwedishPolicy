@@ -106,6 +106,11 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as csv_file:
             # Write the data to the CSV file in each iteration
             csv_writer.writerow([article_link_directory.at[i, 'Collected Links'],
                                  article_link_directory.at[i, 'Outside PDF Text']])
+            
+            # Print the data for the current iteration
+            print(f"Collected Links: {article_link_directory.at[i, 'Collected Links']}")
+            print(f"Outside PDF Text: {article_link_directory.at[i, 'Outside PDF Text']}")
+            print("----------------------------------------")
 
         except Exception as e:
             print(f"An error occurred while processing URL: {link}, Error: {str(e)}")
@@ -113,7 +118,7 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as csv_file:
             csv_writer.writerow([no_content_alert, no_content_alert])
 
         # Introduce a random delay time before the next request
-        time.sleep(3)
+        time.sleep(5)
 
         # Add a break statement if the loop index is equal to the expected number of links minus 1
         if i == len(article_link_directory['Content Links']) - 1:
