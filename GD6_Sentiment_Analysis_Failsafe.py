@@ -325,7 +325,7 @@ for text, text_id in tqdm(zip(text_entries_2, ids_2), total=len(text_entries_2),
         print(f"Error processing text with ID {text_id}: {e}")
         probabilities_fear_list_2.append([0.0, 0.0, 0.0])
         probabilities_violence_list_2.append([0.0, 0.0, 0.0])
-        texts_list_2.append(text_filtered)
+        texts_list_2.append("Error processing text")
         ids_list_2.append(text_id)
 
 # Now, probabilities_fear_list_2 and probabilities_violence_list_2 contain probabilities
