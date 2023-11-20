@@ -294,31 +294,39 @@ text_entries_2 = unprocessed_data['Text'].tolist()
 ids_2 = unprocessed_data['Index'].tolist()
 
 for text, text_id in tqdm(zip(text_entries_2, ids_2), total=len(text_entries_2), desc="Processing Texts"):
-    # Lowercase the entire text
-    text_lower = text.lower()
+    try:
+        # Lowercase the entire text
+        text_lower = text.lower()
 
-    # Tokenize and remove stop words
-    tokens = nltk.word_tokenize(text_lower)
-    tokens_filtered = [word for word in tokens if word.isalnum() and word not in stop_words_swedish]
+        # Tokenize and remove stop words
+        tokens = nltk.word_tokenize(text_lower)
+        tokens_filtered = [word for word in tokens if word.isalnum() and word not in stop_words_swedish]
 
-    # Reconstruct the text
-    text_filtered = ' '.join(tokens_filtered)
+        # Reconstruct the text
+        text_filtered = ' '.join(tokens_filtered)
 
-    # Process the entire text at once
-    inputs = tokenizer(text_filtered, return_tensors="pt", truncation=True, max_length=512)
+        # Process the entire text at once
+        inputs = tokenizer(text_filtered, return_tensors="pt", truncation=True, max_length=512)
 
-    # Calculate probabilities for classifier_fear
-    outputs_fear = classifier_fear(**inputs)
-    probabilities_fear = torch.nn.functional.softmax(outputs_fear.logits, dim=1).tolist()[0]
-    probabilities_fear_list_2.append(probabilities_fear)
+        # Calculate probabilities for classifier_fear
+        outputs_fear = classifier_fear(**inputs)
+        probabilities_fear = torch.nn.functional.softmax(outputs_fear.logits, dim=1).tolist()[0]
+        probabilities_fear_list_2.append(probabilities_fear)
 
-    # Calculate probabilities for classifier_violence
-    outputs_violence = classifier_violence(**inputs)
-    probabilities_violence = torch.nn.functional.softmax(outputs_violence.logits, dim=1).tolist()[0]
-    probabilities_violence_list_2.append(probabilities_violence)
+        # Calculate probabilities for classifier_violence
+        outputs_violence = classifier_violence(**inputs)
+        probabilities_violence = torch.nn.functional.softmax(outputs_violence.logits, dim=1).tolist()[0]
+        probabilities_violence_list_2.append(probabilities_violence)
 
-    texts_list_2.append(text_filtered)
-    ids_list_2.append(text_id)
+        texts_list_2.append(text_filtered)
+        ids_list_2.append(text_id)
+    except Exception as e:
+        # If an error occurs, print the error and append zeros to the probability lists
+        print(f"Error processing text with ID {text_id}: {e}")
+        probabilities_fear_list_2.append([0.0, 0.0, 0.0])
+        probabilities_violence_list_2.append([0.0, 0.0, 0.0])
+        texts_list_2.append(text_filtered)
+        ids_list_2.append(text_id)
 
 # Now, probabilities_fear_list_2 and probabilities_violence_list_2 contain probabilities
 # for classifier_fear and classifier_violence respectively, for each text.
